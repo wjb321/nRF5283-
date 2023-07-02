@@ -1,0 +1,13 @@
+{
+    "files.associations": {
+        "*.cjson": "jsonc",
+        "*.wxss": "css",
+        "*.wxs": "javascript",
+        "beauty2.h": "c",
+        "beauty3.h": "c",
+        "beauty4.h": "c",
+        "beautys.h": "c",
+        "beautyma16.h": "c",
+        "nrf.h": "c"
+    }
+}

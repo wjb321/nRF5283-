@@ -1,0 +1,72 @@
+/* {
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "nRF52 Debug",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceRoot}/build/nrf52/main.elf",
+            "args": [
+                "-i/C:/ncs/v2.3.0/modules/hal/nordic/nrfx/mdk"
+            ],
+            "stopAtEntry": true,
+            "cwd": "${workspaceRoot}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "miDebuggerPath": "arm-none-eabi-gdb",
+            "debugServerPath": "pyocd-gdbserver",
+            "serverLaunchTimeout": 20000,
+            "filterStderr": true,
+            "filterStdout": false,
+            "setupCommands": [
+                {
+                    "text": "target remote localhost:3333",
+                    "description": "Connect to target",
+                    "ignoreFailures": false
+                },
+                {
+                    "text": "load",
+                    "description": "Load file",
+                    "ignoreFailures": false
+                },
+                {
+                    "text": "monitor reset",
+                    "description": "Reset target",
+                    "ignoreFailures": false
+                }
+            ]
+        }
+    ]
+}
+ */
+
+ {
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "name": "Debug",
+        "type": "cppdbg",
+        "request": "launch",
+        "program": "${workspaceFolder}/build_wang/main.elf",
+        "cwd": "${workspaceFolder}",
+        "externalConsole": true,
+        "stopAtEntry": false,
+        "MIMode": "gdb",
+        "miDebuggerPath": "arm-none-eabi-gdb",
+        "setupCommands": [
+          {
+            "description": "Enable pretty-printing for gdb",
+            "text": "-enable-pretty-printing",
+            "ignoreFailures": true
+          },
+          {
+            "description": "Add include path",
+            "text": "-gdb-set directories ${workspaceFolder}/C:/ncs/v2.3.0/modules/hal/cmsis/CMSIS/Core/Include",
+            "ignoreFailures": false
+          }
+        ]
+      }
+    ]
+  }
+  

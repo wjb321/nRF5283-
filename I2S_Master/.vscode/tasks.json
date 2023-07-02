@@ -1,0 +1,101 @@
+/* {
+  // See https://go.microsoft.com/fwlink/?LinkId=733558
+  // for the documentation about the tasks.json format
+  "version": "2.0.0",
+  "tasks": [
+      {
+          "label": "make",
+          "options": {
+              "cwd": "${workspaceRoot}/armgcc"
+          },
+          "problemMatcher": {
+              "owner": "cpp",
+              "fileLocation": ["relative", "${workspaceRoot}"],
+              "pattern": {
+                  "regexp": "^(.*):(\\d+):(\\d+):\\s+(warning|error):\\s+(.*)$",
+                  "file": 1,
+                  "line": 2,
+                  "column": 3,
+                  "severity": 4,
+                  "message": 5
+              }
+          },
+          "args": [],
+          "linux": {
+              "command": "make"
+          },
+          "osx": {
+              "command": "make"
+          },
+          "windows": {
+              "command": "make.exe"
+          }
+      }
+  ]
+} */
+
+{
+    "version": "2.0.0",
+    "tasks": [
+      {
+        "label": "build_wang",
+        "type": "shell",
+        "command": "arm-none-eabi-gcc",
+        "args": [
+          "-DNRF52",
+          "-c",
+          "src/main.c",
+          "-o",
+          "build/main.o",
+          "-mcpu=cortex-m4",
+          "-mthumb",
+          "-Wall",
+          "-Werror",
+          "-I",
+         "C:/ncs/v2.3.0/modules/hal/nordic/nrfx/mdk",
+         "-I",
+         "C:/ncs/v2.3.0/modules/hal/cmsis/CMSIS/Core/Include"
+        ],
+        "problemMatcher": "$gcc",
+        "group": {
+          "kind": "build",
+          "isDefault": true
+        }
+      },
+      {
+        "label": "link",
+        "type": "shell",
+        "command": "arm-none-eabi-gcc",
+        "args": [
+          "build/main.o",
+          "-o",
+          "build/main.elf",
+          "-mcpu=cortex-m4",
+          "-mthumb",
+          "-T",
+          "linker_script.ld"
+        ],
+        "problemMatcher": "$gcc",
+        "group": {
+          "kind": "build",
+          "isDefault": true
+        }
+      },
+      {
+        "label": "flash",
+        "type": "shell",
+        "command": "arm-none-eabi-gdb",
+        "args": [
+          "--batch",
+          "-x",
+          "flash.gdb"
+        ],
+        "problemMatcher": [],
+        "group": {
+          "kind": "test",
+          "isDefault": true
+        }
+      }
+    ]
+  }
+  

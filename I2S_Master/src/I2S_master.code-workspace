@@ -1,0 +1,23 @@
+{
+	"folders": [
+		{
+			"name": "I2S_master",
+			"path": ".."
+		},
+		{
+			"name": "I2S_Audio",
+			"path": "../../I2S_Audio"
+		}
+	],
+	"settings": {
+		"files.associations": {
+			"*.cjson": "jsonc",
+			"*.wxss": "css",
+			"*.wxs": "javascript",
+			"nrf.h": "c",
+			"kernel.h": "c",
+			"bossmessage.h": "c",
+			"bossmessage16.h": "c"
+		}
+	}
+}
