@@ -7,28 +7,47 @@ I2S example
 Overview
 ********
 
-This is a simple I2S audio transceiver example. You can plug any source of music and listen to it.
+This is a simple code that takes an "xx.wav" music file, converts it to "xx.h", and then performs audio playback and testing.
 
 Audio Format
 ************
 
 The driver requires and provides Audio data with the following parameters:
 
-* 44100 kHz sample rate
-* Signed 24 bit PCM
+* 8 kHz sample rate
+* Signed 16 bit PCM
 * Stereo
 * Little endian
 
-Building
+nRF to MAX98357A
 ********
+        nRF           ------ MAX98357A   
 
-.. code-block::
+#define PIN_MCK    (13) ------ Clock for SCK and LRCK  
 
-   mkdir build && cd build
-   cmake -DBOARD=litex_vexriscv ..
-   make
+#define PIN_SCK    (14) ------ BCLK  
 
-Known issues
+#define PIN_LRCK   (15) ------ LRC  
+
+#define PIN_SDOUT  (16) ------ DIN  
+
+
+Tools
+********
+1. `wavetocode <https://colinjs.com/software.htm>`__
+2. `audacity <https://www.audacityteam.org/>`__
+3. `nRF command line tools <https://www.nordicsemi.com/Products/Development-tools/nRF-Command-Line-Tools>`__
+4. `nRF connect for desktop <https://www.nordicsemi.com/Products/Development-tools/nrf-connect-for-desktop>`__
+
+Reference videos/pdfs
 ************
+1. `Get started <https://infocenter.nordicsemi.com/pdf/getting_started_NCS_nRF52_20210211.pdf>`__  
+2. `nRF Connect for VS Code <https://www.nordicsemi.com/Products/Development-tools/nRF-Connect-for-VS-Code/Tutorials>`__  
+3. `Index to nrf52832 <https://infocenter.nordicsemi.com/index.jsp>`__  
 
-It seems that after a few minutes some music delay occurs, this is because the sound driver is not able to send data as fast as it receives it.
+Building(nRF Connect)
+********
+1. Create a new application in WELCOME  
+2. FreeStanding/Workspace  
+3. build after creating APPLICATION  
+4. flash in ACTION  
