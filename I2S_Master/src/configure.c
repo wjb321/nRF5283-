@@ -4,6 +4,9 @@
 //#include "meinv8k.h"
 #include <nrf.h>
 #include "textMessage8k.h"
+//#include "2k_16bit.h"
+//#include "2k_8bit.h"
+//#include "ISO-2.h"
 //#include "beauty.h"
 //#include "audio_laugh2048s8.h" // PCM (uncompressed) 24 bit mixed with 8bit :some noise, and fast sane like 16KHz sample rate in audiocity
 
@@ -36,7 +39,7 @@ void I2Sconfiguration()
   NRF_I2S->CONFIG.FORMAT = I2S_CONFIG_FORMAT_FORMAT_I2S << I2S_CONFIG_FORMAT_FORMAT_Pos;
   
   // Use stereo 
-  NRF_I2S->CONFIG.CHANNELS = I2S_CONFIG_CHANNELS_CHANNELS_LEFT << I2S_CONFIG_CHANNELS_CHANNELS_Pos;
+  NRF_I2S->CONFIG.CHANNELS = I2S_CONFIG_CHANNELS_CHANNELS_RIGHT << I2S_CONFIG_CHANNELS_CHANNELS_Pos;
   
   // Configure pins
   NRF_I2S->PSEL.MCK =   (PIN_MCK << I2S_PSEL_MCK_PIN_Pos);

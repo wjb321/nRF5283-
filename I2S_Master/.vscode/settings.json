@@ -9,5 +9,6 @@
         "beautys.h": "c",
         "beautyma16.h": "c",
         "nrf.h": "c"
-    }
+    },
+    "nrf-connect.toolchain.path": "${nrf-connect.toolchain:2.3.0}"
 }
