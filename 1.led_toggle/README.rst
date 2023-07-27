@@ -1,59 +1,37 @@
-.. _tfm_hello_world:
+.. _Toggle_Led:
 
-TF-M Hello World
+Toggle LED
 ################
 
 .. contents::
    :local:
    :depth: 2
 
-The TF-M Hello World sample is based on Hello World that demonstrates adding Trusted Firmware-M (TF-M) to an application.
+The main objective is to drive LED toggle, configure the analysis pins as output ports, and understand the relevant electrical characteristics
 
-Requirements
+Some configurations
 ************
+a. Pin sensing mechanism: high, low, dis, mask
+b. Pull configuration: 
+c. Connect or disconnect input buffer
+d. Drive configuration: s0/h0/d0|s1/h1/d1
 
-The sample supports the following development kits:
+Regarding driving issues
+************
+The different options specify how a configured GPIO pin sinks current when you set it low (write 0 to the pin) and how a configured pin sources current when you set it high (write 1 to the pin).
 
-.. table-from-sample-yaml::
+| Standard means the pin will be sourced or sinked with up to 0.5 mA for the assigned signal (high or low)
+| High source means the pin will be sourced with up to 5.0 mA for high signal
+| High sink means the pin will be sinked with up to 15.0 mA for low signal
+| Disconnected means there is no drive, the pin is high impedance. Consequently, there is no current flowing to or from the pin, no matter the drive of any external circuit connected to the pin.
 
-Overview
-********
-
-This sample uses the Platform Security Architecture (PSA) API to calculate a SHA-256 digest and the TF-M platform read service to read two FICR registers.
-The PSA API call is handled by the TF-M secure firmware.
-
-Building and running
-********************
-
-.. |sample path| replace:: :file:`samples/tfm/tfm_hello_world`
-
-.. include:: /includes/build_and_run.txt
+The sample supports the dev board:
+************
+nrf52_nrf52832
 
 Testing
 =======
 
-After programming the sample, the following output is displayed in the console:
-
 .. code-block:: console
 
-    Hello World! nrf5340dk_nrf5340_cpuapp
-    Generating random number
-    0x8aefe6b7473f2e2c170bbd3eb39aa7679bc1e7693a11030b0a4c1c8ba41eb457
-    Reading some secure memory that NS is allowed to read
-    FICR->INFO.PART: 0x00005340
-    FICR->INFO.VARIANT: 0x514b4141
-    Hashing 'Hello World! nrf5340dk_nrf5340_cpuapp'
-    SHA256 digest:
-    0x12f0c84eecba8497cc0bec1ebc5a785df2ae027a2545921d6cdc0920c5aaefd7
-	Finished
-
-Dependencies
-*************
-
-This sample uses the TF-M module that can be found in the following location in the |NCS| folder structure:
-
-* ``modules/tee/tfm/``
-
-This sample uses the following libraries:
-
-* :ref:`lib_tfm_ioctl_api`
+    LED1 is toggling 
