@@ -1,29 +1,29 @@
 .. _Toggle_Led:
 
-Toggle LED
+UARTE
 ################
 
 .. contents::
    :local:
    :depth: 2
 
-The main objective is to drive LED toggle, configure the analysis pins as output ports, and understand the relevant electrical characteristics
+The main objective is to try on uartE(uart with easyDMA), configure the analysis pins as output ports, and understand the relevant electrical characteristics
 
 Some configurations
 ************
-a. Pin sensing mechanism: high, low, dis, mask
-b. Pull configuration: 
-c. Connect or disconnect input buffer
-d. Drive configuration: s0/h0/d0|s1/h1/d1
+| configure tx 6
+| configure rx 8
 
 Regarding driving issues
 ************
-The different options specify how a configured GPIO pin sinks current when you set it low (write 0 to the pin) and how a configured pin sources current when you set it high (write 1 to the pin).
-
-| Standard means the pin will be sourced or sinked with up to 0.5 mA for the assigned signal (high or low)
-| High source means the pin will be sourced with up to 5.0 mA for high signal
-| High sink means the pin will be sinked with up to 15.0 mA for low signal
-| Disconnected means there is no drive, the pin is high impedance. Consequently, there is no current flowing to or from the pin, no matter the drive of any external circuit connected to the pin.
+1. there are legacy uart and uarte
+2. support blocking and non-blocking
+3. support onging aborting rx and tx tansfers
+4. double rx buffering
+5. with and without hardware flow control
+6. peripherals using EasyDMA can work only with buffers that are placed in the data RAM region, sometimes ,compliers might choose 
+   to use a different region for data placement, for instance, place a constant buffer in the code flash, then the UARTE peripherals can 
+   not be used to transfer data from the buffer.
 
 The sample supports the dev board:
 ************
@@ -34,4 +34,4 @@ Testing
 
 .. code-block:: console
 
-    LED1 is toggling 
+    welcome to infrafon!
