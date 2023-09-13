@@ -1,13 +1,13 @@
-.. _hello_world:
+.. _GPIO_input: ..
 
-Hello World
+gpio input for led on off
 ###########
 
 Overview
 ********
 
 A simple sample that can be used with any :ref:`supported board <boards>` and
-prints "Hello World" to the console.
+when pressing the button 1(nrf52), the led1 will be on.
 
 Building and Running
 ********************
@@ -15,9 +15,9 @@ Building and Running
 This application can be built and executed on QEMU as follows:
 
 .. zephyr-app-commands::
-   :zephyr-app: samples/hello_world
-   :host-os: unix
-   :board: qemu_x86
+   :zephyr-app: samples/gpio_input
+   :host-os: linux
+   :board: nrf5283
    :goals: run
    :compact:
 
@@ -28,6 +28,6 @@ Sample Output
 
 .. code-block:: console
 
-    Hello World! x86
+   press on/unpress off
 
 Exit QEMU by pressing :kbd:`CTRL+A` :kbd:`x`.
